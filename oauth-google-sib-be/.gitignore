@@ -1,0 +1,31 @@
+# Node.js
+node_modules/
+
+# Logs
+logs
+*.log
+
+# Dependency directories
+pids
+logs
+results
+build
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Editor directories and files
+.vscode/
+.idea/
+
+# Hapi.js specific
+.env
+
+# Optional: Config files
+config/*.json
+config/*.yaml
+test.json
+
+# Firebase service account
+*adminsdk*.json

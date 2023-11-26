@@ -1,0 +1,68 @@
+{
+	"info": {
+		"_postman_id": "892b6d12-af39-48b2-b7d2-75e54803f32f",
+		"name": "OAuth Google SIB",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "17209023"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Login User",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test('should response 201 status code', () => {",
+									"    pm.response.to.have.status(201);",
+									"});",
+									"",
+									"pm.test('should respose with correct property and message', () => {",
+									"    const responseJson = pm.response.json();",
+									"",
+									"    pm.expect(responseJson).to.be.an('object');",
+									"    pm.expect(responseJson.status).to.equal('success');",
+									"    pm.expect(responseJson.data).to.be.an('object');",
+									"    pm.expect(responseJson.data.accessToken).to.be.a('string');",
+									"    pm.expect(responseJson.data.refreshToken).to.be.a('string');",
+									"",
+									"    pm.environment.set('accessToken', responseJson.data.accessToken);",
+									"    pm.environment.set('refreshToken', responseJson.data.refreshToken);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"authIdToken\": \"eyJhbGciOiJSUzI1NiIsImtpZCI6ImE2YzYzNTNmMmEzZWMxMjg2NTA1MzBkMTVmNmM0Y2Y0NTcxYTQ1NTciLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiSXZhbiBBdWxpYSBSYWhtYW4iLCJwaWN0dXJlIjoiaHR0cHM6Ly9saDMuZ29vZ2xldXNlcmNvbnRlbnQuY29tL2EvQUNnOG9jSUlBOUxsVlNRUV9jczdlUTJRTWFwVFlsZW94bTZFc1hjb2xXcUItQ18yeE5NPXM5Ni1jIiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL3NpYi1kaWNvZGluZyIsImF1ZCI6InNpYi1kaWNvZGluZyIsImF1dGhfdGltZSI6MTcwMDk4MDMwMCwidXNlcl9pZCI6InZkWlVDdDdCOXZPZjE0Q1ZqRWxYd0VBNU5LYTIiLCJzdWIiOiJ2ZFpVQ3Q3Qjl2T2YxNENWakVsWHdFQTVOS2EyIiwiaWF0IjoxNzAwOTgwMzAwLCJleHAiOjE3MDA5ODM5MDAsImZpcmViYXNlIjp7ImlkZW50aXRpZXMiOnsiZ29vZ2xlLmNvbSI6WyIxMDQyMzEyMjU0MTkwNzYyMjY3OTQiXX0sInNpZ25faW5fcHJvdmlkZXIiOiJnb29nbGUuY29tIn19.s7EIaZMbD1yj-ycYDrTiJvBCPuh_-UyuHnfJyZntGx0-amtr38Soc8t8UQrMTpAtVyrolhtu22jT0FdjIwUX8LC0t8fDt7F4qw29HUA2-v1d-S6w-yQr-x7ZzavriXil9xKg0Rsw5LDnCJv9jerhGwTQ5yrAKJqjM2d2VaIQJpK6aCqMpXdOn7TUmxhADWjmc7XUo4Idqwt2_3Lux2bQ5PJVGpGbdsvlORt2I60z-Ml7hx7bX9Kxq4ZCZI4f5RFxxBZFxWuB1FkvJDRxRqGcS8Hxwdnmegu7dLpUnNpqDvi2DXHSwFkLn5duQHt0MmiFVXwW6s62o1DYGwsgtoVCbA\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{protocol}}://{{host}}{{port}}/auth",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}{{port}}"
+							],
+							"path": [
+								"auth"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
